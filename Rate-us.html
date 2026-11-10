@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<title>Rate us!</title>
+<body>
+        <div id="container">
+            <div id="headerArea">
+                <div id="header"style="height: 284px;"></div>
+                <nav id="navbar">
+    <ul>
+        <li><a href="index.html" target="_top">Home</a></li>
+        <li><a href="Nachos.html">Nachos</a></li>
+        <li><a href="Mini-Burger.html">Mini Burger</a></li>
+        <li><a href="Oreo-Frappe.html">Oreo Frappe</a></li>
+        <li><a href="Members.html">Members</a></li>
+        <li><a href="Rate-us.html">Rate us!</a></li>
+    </ul>
+</nav>
+            </div>
+
+            <div id="flex">
+                <aside id="leftSidebar">
+                    <h2></h2>
+                    <div class="box">
+                        <p>Grade 10 St. Thomas</p>
+                        <P style="color:#630000;">I made this in three days "( – ⌓ – )-alex</P>
+                    </div>
+                    <h2></h2>
+                    <h3></h3>
+                </aside>
+                <main>
+                    <h1 style="text-align:center;">Hello!</h1>
+                    <p style="text-align:center;"><strong>____________</strong></p>
+                    <a href="https://forms.gle/jbpj7MEXgoKgoBmr7">Please rate us here!</a>
+                    <p style="color:#edebdd;">.</p>
+                    <p style="color:#edebdd;">.</p>
+                    <p style="color:#edebdd;">.</p>
+
+                    <p style="color:#edebdd;">.</p>
+                    <p style="color:#edebdd;">.</p>
+
+                    <p style="color:#edebdd;">.</p>
+
+
+                </main>
+                <aside id="rightSidebar">
+                    <h2></h2>
+                    <div class="box">
+                        <p>Grade 10 St. Thomas</p>
+                        <P style="color:#630000;">I made this in three days "( – ⌓ – )-alex</P>
+                    </div>
+                    <h2></h2>
+                    <h3></h3>
+                </aside>
+            </div>
+            <footer id="footer">A.E</footer>
+        </div>
+
+        <style>
+
+            :root {
+                --header-image: url('https://i.pinimg.com/736x/1e/48/ca/1e48ca4bb50cd8453ae8feed9681e365.jpg');
+                --body-bg-image: url('https://i.pinimg.com/1200x/03/e2/5d/03e25d9e60ec301afc22bb985808d247.jpg');
+
+                --content: #fffcdd;
+            }
+
+
+            @font-face {
+                font-family: Nunito;
+                src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf');
+            }
+
+            @font-face {
+                font-family: Nunito;
+                src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf');
+                font-weight: bold;
+            }
+
+            @font-face {
+                font-family: Nunito;
+                src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf');
+                font-style: italic;
+            }
+
+            @font-face {
+                font-family: Nunito;
+                src: url('https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf');
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            body {
+                font-family: 'Nunito', sans-serif;
+                margin: 0;
+                background-color: #08031A;
+                background-size: 65px;
+                color: #fceaff;
+                background-image: var(--body-bg-image);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            #container {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            #container a {
+                color: black;
+                font-weight: bold;
+            }
+
+            #header {
+                width: 100%;
+                background-color: #5e4e8c;
+                height: 150px;
+                background-image: var(--header-image);
+                background-size: 100%;
+            }
+
+            #navbar {
+                height: 40px;
+                background-color: #1b1a1d;
+                width: 100%;
+            }
+
+            #navbar ul {
+                display: flex;
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                justify-content: space-evenly;
+            }
+
+            #navbar li {
+                padding-top: 10px;
+            }
+
+            #navbar li a {
+                color: #d63333;
+                font-weight: 800;
+                text-decoration: none;
+
+            }
+
+            #navbar li a:hover {
+                color: #af7777;
+                text-decoration: underline;
+            }
+
+            #flex {
+                display: flex;
+            }
+
+            aside {
+                background-color: #810100;
+                width: 200px;
+                padding: 20px;
+                font-size: smaller;
+            }
+
+
+            main {
+                background-color: #edebdd;
+                flex: 1;
+                padding: 20px;
+                order: 2;
+            }
+
+            */ #leftSidebar {
+                order: 1;
+            }
+
+            #rightSidebar {
+                order: 3;
+            }
+
+            footer {
+                background-color: #000000;
+                width: 100%;
+                height: 40px;
+                padding: 10px;
+                text-align: center;
+            }
+
+            h1,
+            h2,
+            h3 {
+                color: black;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            strong {
+                
+                color: black;
+            }
+
+            
+            .box {
+                background-color: #630000;
+                border: 1px solid black;
+                padding: 10px;
+            }
+
+
+            #topBar {
+                width: 100%;
+                height: 30px;
+                padding: 10px;
+                font-size: smaller;
+                background-color: #13092D;
+            }
+
+
+            @media only screen and (max-width: 800px) {
+                #flex {
+                    flex-wrap: wrap;
+                }
+
+                aside {
+                    width: 100%;
+                }
+
+                main {
+                    order: 1;
+                }
+
+                #leftSidebar {
+                    order: 2;
+                }
+
+                #rightSidebar {
+                    order: 3;
+                }
+
+                #navbar ul {
+                    flex-wrap: wrap;
+                }
+            }
+        </style>
+    
+
+         <audio controls autoplay loop>
+            <source src="d:\Alex Folder\Beneath the Mask -instrumental version-.mp3" type="audio/mpeg"
+         </audio>
+    </body>
+</html>

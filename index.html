@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu</title>
+    <style>
+        :root {
+            --header-image: url('https://i.pinimg.com/originals/ef/7a/dc/ef7adc4f29a4a223ec9fcb55c785b78c.gif');
+            --body-bg-image: url('https://i.pinimg.com/736x/ed/fe/66/edfe66878058d93d381bb950266c9958.jpg');
+            --content: #fffcdd;
+        }
+
+        @font-face {
+            font-family: Nunito;
+            src: url('https://sadhost.neocities.org/fonts/Nunito-Regular.ttf');
+        }
+        @font-face {
+            font-family: Nunito;
+            src: url('https://sadhost.neocities.org/fonts/Nunito-Bold.ttf');
+            font-weight: bold;
+        }
+        @font-face {
+            font-family: Nunito;
+            src: url('https://sadhost.neocities.org/fonts/Nunito-Italic.ttf');
+            font-style: italic;
+        }
+        @font-face {
+            font-family: Nunito;
+            src: url('https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf');
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            background-color: #08031A;
+            background-size: 65px;
+            background-image: var(--body-bg-image);
+            color: #fceaff;
+        }
+
+        #container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #header {
+            width: 100%;
+            height: 150px;
+            background-color: #5e4e8c;
+            background-image: var(--header-image);
+            background-size: 100%;
+        }
+
+        #navbar {
+            background-color: #1b1a1d;
+            width: 100%;
+            min-height: 40px;
+        }
+
+        #navbar ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        #navbar li {
+            padding: 10px 4px 0;
+        }
+
+        #navbar li a {
+            color: #ffffff;
+            font-weight: 800;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: #2f4860;
+            text-decoration: underline;
+        }
+
+        #flex {
+            display: flex;
+        }
+
+        aside {
+            background-color: #7da7d9;
+            width: 200px;
+            padding: 20px;
+            font-size: smaller;
+        }
+
+        main {
+            background-color: #dceeff;
+            color: #353a4c;
+            flex: 1;
+            padding: 20px;
+            order: 2;
+        }
+
+        #leftSidebar  { order: 1; }
+        #rightSidebar { order: 3; }
+
+        footer {
+            background-color: #000000;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1, h2, h3 { color: #353a4c; }
+        h1 { font-size: 25px; }
+        strong { color: #353a4c; }
+        aside h2, aside h3 { color: #1b1a1d; }
+
+        .box {
+            background-color: #394988;
+            border: 1px solid black;
+            padding: 10px;
+            color: #fceaff;
+        }
+
+        .box input {
+            width: 100%;
+            margin-bottom: 6px;
+            padding: 5px;
+            font-family: inherit;
+            font-size: 13px;
+            border: 1px solid #13092D;
+            border-radius: 4px;
+        }
+
+        .box button {
+            width: 100%;
+            padding: 6px;
+            font-family: inherit;
+            font-weight: bold;
+            background: #1b1a1d;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .box button:hover { background: #2f4860; }
+
+        .hint {
+            font-size: 11px;
+            opacity: 0.8;
+            margin: 0 0 6px;
+        }
+
+        /* ---------- Popup ---------- */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 3, 26, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .overlay.open { display: flex; }
+
+        .panel {
+            background: #dceeff;
+            width: min(900px, 100%);
+            height: min(80vh, 700px);
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #5e4e8c;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .panel-head {
+            background: #1b1a1d;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 14px;
+            font-weight: 800;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+
+        .close-btn:hover { color: #7da7d9; }
+
+        .panel iframe {
+            flex: 1;
+            width: 100%;
+            border: 0;
+            background: #ffffff;
+        }
+
+        footer { margin-top: 0; }
+
+        @media only screen and (max-width: 800px) {
+            #flex { flex-wrap: wrap; }
+            aside { width: 100%; }
+            main { order: 1; }
+            #leftSidebar { order: 2; }
+            #rightSidebar { order: 3; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <div id="headerArea">
+        <div id="header"></div>
+        <nav id="navbar">
+            <ul id="navList"></ul>
+        </nav>
+    </div>
+
+    <div id="flex">
+        <aside id="leftSidebar">
+            <h2>Menu</h2>
+            <div class="box">
+                <p>Appetizers!</p>
+                <ul style="padding-left:10px;">
+                    <li>Nachos</li>
+                    <li>Mini Burger</li>
+                </ul>
+                <p>Beverage</p>
+                <ul style="padding-left:10px;">
+                    <li>Oreo Frappe</li>
+                </ul>
+            </div>
+            <h2>(˵ •̀ ᴗ - ˵ ) ✧</h2>
+            <h3>✮⋆˙</h3>
+        </aside>
+
+        <main>
+            <h1 style="text-align:center;">Welcome!</h1>
+            <p style="text-align:center;"><strong>*ੈ✩‧₊˚༺☆༻*ੈ✩‧₊˚</strong></p>
+            <p style="color:#dceeff;">.</p>
+            <p style="color:#353a4c; text-align:center;">Laughter is brightest in the place where food is good.</p>
+            <p style="color:#dceeff;">.</p>
+            <p style="color:#dceeff;">.</p>
+            <p style="color:#dceeff;">.</p>
+            <p style="color:#dceeff;">.</p>
+            <p style="color:#dceeff;">.</p>
+        </main>
+
+        <aside id="rightSidebar">
+            <h2>⟢</h2>
+            <div class="box">
+                <p>We don't make fast food, we make good food as fast as we can.</p>
+            </div>
+
+            <h2>Add a page</h2>
+            <div class="box">
+                <p class="hint">Paste an HTML file name or link. It will be added to the menu.</p>
+                <form id="addForm" autocomplete="off">
+                    <input id="newName" type="text" placeholder="Name (e.g. Desserts)">
+                    <input id="newUrl" type="text" placeholder="Link (e.g. Desserts.html)" required>
+                    <button type="submit">Add to menu</button>
+                </form>
+            </div>
+
+            <h2>(˵ •̀ ᴗ - ˵ ) ✧</h2>
+            <h3>✮⋆˙</h3>
+        </aside>
+    </div>
+
+    <footer id="footer">Mikey and Friends</footer>
+</div>
+
+<!-- Popup that shows the linked page in the center of the screen -->
+<div class="overlay" id="overlay">
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+        <div class="panel-head">
+            <span id="panelTitle"></span>
+            <button class="close-btn" id="closeBtn" aria-label="Close">&times;</button>
+        </div>
+        <iframe id="frame" title="Page content"></iframe>
+    </div>
+</div>
+
+<script>
+    // ---- Your pages ----
+    // "url" is the HTML file (or link) to open. Leave url as null for Home.
+    const DEFAULT_PAGES = [
+    { name: "Home",        url: null },
+    { name: "Nachos",      url: "Nachos.html" },
+    { name: "Mini Burger", url: "Mini-Burger.html" },
+    { name: "Oreo Frappe", url: "Oreo-Frappe.html" },
+    { name: "Members୨ৎ",   url: "Members.html" },
+    { name: "Rate us!",    url: "Rate-us.html" }
+];
+
+    const STORAGE_KEY = "menuViewerPages";
+
+    function loadPages() {
+        try {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+            if (Array.isArray(saved) && saved.length) return saved;
+        } catch (e) { /* storage unavailable, use defaults */ }
+        return DEFAULT_PAGES.map(p => ({ ...p }));
+    }
+
+    function savePages() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(pages)); } catch (e) {}
+    }
+
+    let pages = loadPages();
+
+    const navList = document.getElementById("navList");
+    const overlay = document.getElementById("overlay");
+    const frame = document.getElementById("frame");
+    const panelTitle = document.getElementById("panelTitle");
+
+    function closePopup() {
+        overlay.classList.remove("open");
+        frame.src = "about:blank";
+        document.querySelectorAll("#navbar a.active").forEach(a => a.classList.remove("active"));
+    }
+
+    function openPopup(page, linkEl) {
+        if (!page.url) {               // Home: just show the main page
+            closePopup();
+            return;
+        }
+        document.querySelectorAll("#navbar a.active").forEach(a => a.classList.remove("active"));
+        if (linkEl) linkEl.classList.add("active");
+        panelTitle.textContent = page.name;
+        frame.src = page.url;
+        overlay.classList.add("open");
+    }
+
+    function renderNav() {
+        navList.innerHTML = "";
+        pages.forEach(page => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.textContent = page.name;
+            a.href = "#";
+            a.addEventListener("click", e => {
+                e.preventDefault();
+                openPopup(page, a);
+            });
+            li.appendChild(a);
+            navList.appendChild(li);
+        });
+    }
+
+    document.getElementById("closeBtn").addEventListener("click", closePopup);
+
+    overlay.addEventListener("click", e => {
+        if (e.target === overlay) closePopup();   // click outside the panel closes it
+    });
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closePopup();
+    });
+
+    document.getElementById("addForm").addEventListener("submit", e => {
+        e.preventDefault();
+        const url = document.getElementById("newUrl").value.trim();
+        let name = document.getElementById("newName").value.trim();
+        if (!url) return;
+        if (!name) {
+            name = decodeURIComponent(url.split(/[\\/]/).pop() || url).replace(/\.html?$/i, "");
+        }
+        pages.push({ name, url });
+        savePages();
+        renderNav();
+        document.getElementById("addForm").reset();
+    });
+
+    renderNav();
+</script>
+
+</body>
+</html>
